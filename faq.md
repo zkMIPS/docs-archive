@@ -1,14 +1,6 @@
-# ❔ FAQ
+# 💡 FAQ
 
 ## About ZKM
-
-### **What is ZKM?**
-
-ZKM (or zkMIPS) is a Universal and General-Purpose ZK Proof System whose main purpose is to turn Ethereum into a global settlement layer.
-
-### **What is the mission and vision of ZKM?**
-
-The mission of ZKM is to utilize and build on Zero-Knowledge Proof (ZKP) capabilities. The vision of ZKM is to unite all Layer 2 (L2) and Layer 1 (L1) blockchain networks into a Global Settlement Layer on Ethereum. It also aims to enable tamper-proof Internet of Things (IoT) devices and cloud computing.
 
 ### What challenges does ZKM aim to address?
 
@@ -16,15 +8,15 @@ The project aims to address several challenges, including the elimination of the
 
 ### What are the main features of ZKM?
 
-The main features of zkMIPS (Zero-Knowledge Proof MIPS) include:
+The main features of ZKM (Zero-Knowledge Proof MIPS) include:
 
 * One ZKP for All: By securing the CPU/MIPS beneath every VM, framework, or app above, all software above the CPU is secured. This allows everyone to claim Zero-Knowledge Proof (ZKP) security without needing to perform ZK proofing themselves.
-* Work with All VMs: zkMIPS sits beneath every Virtual Machine (VM), enabling compatibility with various blockchain smart contract engine VMs, such as MoveVM (zkMVM), WASM (zkWASM), and RustVM (zkRVM).
-* Plug and Play Adoption: Developers can adopt zkMIPS without changing or adapting their existing codebase for ZKP. It offers zero- or low-cost adoption and technology-agnostic adoption, allowing the use of different smart contract languages and even traditional programming languages.
-* Long-Term Stability: Leveraging the stability of the MIPS instruction set, zkMIPS eliminates concerns about constantly changing EVM instruction sets, providing a more stable environment for development.
-* Free Security for All: zkMIPS leverages the large, decentralized security base of Ethereum to validate all transactions, ensuring security for both blockchain and non-blockchain applications.
-* Better L2 Rollup User Experience: With zkMIPS-enabled Hybrid Rollup, users can enjoy an improved experience. Former Optimistic Rollup users benefit from instant confirmation and finality without waiting for a 7-day withdrawal period from Layer 2 to Layer 1. Depository users experience doubled security through ZKP verification and a fraud-proof challenge window that can be extended well beyond the standard 7-day window for safe transfers of large amounts.
-* Going Far Beyond L2s, and Beyond Blockchain: zkMIPS expands the scope of Optimistic Rollups' potential market. It extends its reach to alternative Layer 1 blockchains (such as BNB, Celo, etc.), providing the benefits of zkMIPS security. Additionally, zkMIPS enables tamper-proof Internet of Things (IoT) devices and enhances security in cloud computing environments.
+* Work with All VMs: ZKM sits beneath every Virtual Machine (VM), enabling compatibility with various blockchain smart contract engine VMs, such as MoveVM (zkMVM), WASM (zkWASM), and RustVM (zkRVM).
+* Plug and Play Adoption: Developers can adopt ZKM without changing or adapting their existing codebase for ZKP. It offers zero- or low-cost adoption and technology-agnostic adoption, allowing the use of different smart contract languages and even traditional programming languages.
+* Long-Term Stability: Leveraging the stability of the MIPS instruction set, ZKM eliminates concerns about constantly changing EVM instruction sets, providing a more stable environment for development.
+* Free Security for All: ZKM leverages the large, decentralized security base of Ethereum to validate all transactions, ensuring security for both blockchain and non-blockchain applications.
+* Better L2 Rollup User Experience: With ZKM-enabled Hybrid Rollup, users can enjoy an improved experience. Former Optimistic Rollup users benefit from instant confirmation and finality without waiting for a 7-day withdrawal period from Layer 2 to Layer 1. Depository users experience doubled security through ZKP verification and a fraud-proof challenge window that can be extended well beyond the standard 7-day window for safe transfers of large amounts.
+* Going Far Beyond L2s, and Beyond Blockchain: ZKM expands the scope of Optimistic Rollups' potential market. It extends its reach to alternative Layer 1 blockchains (such as BNB, Celo, etc.), providing the benefits of ZKM security. Additionally, ZKM enables tamper-proof Internet of Things (IoT) devices and enhances security in cloud computing environments.
 
 ## About Hybrid Rollups
 
@@ -92,7 +84,7 @@ Yes, MIPS is often used in real-time systems. Its simplified instruction set and
 
 ### Can I use MIPS to develop software for embedded systems?
 
-Yes, MIPS is commonly used for developing software for embedded systems. Its low power consumption, compact code size, and efficient execution make it well-suited for various embedded applications, including consumer electronics, automotive systems, and industrial devices. This was one of our motives when designing architecture for zkMIPS.
+Yes, MIPS is commonly used for developing software for embedded systems. Its low power consumption, compact code size, and efficient execution make it well-suited for various embedded applications, including consumer electronics, automotive systems, and industrial devices. This was one of our motives when designing architecture for ZKM.
 
 ### What is the difference between MIPS and ARM architectures?
 

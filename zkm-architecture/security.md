@@ -1,6 +1,6 @@
 # Security
 
-Understanding the security properties of zkMIPS is a challenge. Ethereum already is a very complex technology, and Zero Knowledge even more so, with several layers of abstraction on top of it, at times using unclear terminology with implicit assumptions.
+Understanding the security properties of ZKM is a challenge. Ethereum already is a very complex technology, and Zero Knowledge even more so, with several layers of abstraction on top of it, at times using unclear terminology with implicit assumptions.
 
 Fuzzy and vague descriptions are the enemy of any rigorous security analysis, so when  analyzing the security of a system,  we should always ask two questions:
 
@@ -25,7 +25,7 @@ So if all these values are public, you may ask: what, then, is P's secret? Or, u
 
 <figure><img src="https://lh7-us.googleusercontent.com/8kV3H4nAvJV4zwJIwTtcV6DQ4HGwCoY3twfKPSrr9rwsRMJfjYVpFdeMom9IMNkAqmQqJaX9EFStj6ivlYf9BTmSVj4-7LeEya_x4KAFiQP0OjDmw_tbGrOYHs7jHuIEeflA_HjJJXcgnriS8nz9XJdqo4BmEs1t2yEcdU6XnwgjNqrnLOmuQVMcHp5CPw" alt=""><figcaption><p>P proves to V that it computed F(x) correctly by showing it knows a corresponding execution trace which leads to the answer y</p></figcaption></figure>
 
-So what is an execution trace? A zkMIPS computation happens in steps, and its overall state can be defined by the values of a finite list of variables. A valid computation is a sequence of states, from a well-defined initial state to some final state, in which each state transition represents a valid computation step. It can be represented as a table whose columns represent the list of variables and whose rows represent each step of the computation. This table is known as the execution trace; the following diagram shows a toy example.\
+So what is an execution trace? A ZKM computation happens in steps, and its overall state can be defined by the values of a finite list of variables. A valid computation is a sequence of states, from a well-defined initial state to some final state, in which each state transition represents a valid computation step. It can be represented as a table whose columns represent the list of variables and whose rows represent each step of the computation. This table is known as the execution trace; the following diagram shows a toy example.\
 
 
 | opcode       | state | R0 | R1 | R2 | R3 | R4 |
