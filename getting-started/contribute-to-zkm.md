@@ -1,6 +1,6 @@
 # Contribute to ZKM
 
-We are launching a POINTS program for contributors to ZKM. You can find bounties to help learn about and grow the ZKM ecosystem. The POINTS program can be found here:
+We have launched a POINTS program for contributors to ZKM. You can find bounties to help learn about and grow the ZKM ecosystem. The POINTS program can be found here:
 
 {% embed url="https://points.zkm.io/" %}
 

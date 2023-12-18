@@ -2,12 +2,12 @@
 
 Understanding the security properties of ZKM is a challenge. Ethereum already is a very complex technology, and Zero Knowledge even more so, with several layers of abstraction on top of it, at times using unclear terminology with implicit assumptions.
 
-Fuzzy and vague descriptions are the enemy of any rigorous security analysis, so when  analyzing the security of a system,  we should always ask two questions:
+Fuzzy and vague descriptions are the enemy of any rigorous security analysis, so when analyzing the security of a system, we should always ask two questions:
 
 * Question 1: What, exactly, is the setting? Which are the parties? Which components of the system are trusted? What is the exact data?
 * Question 2: What, exactly, are the security properties we want to maintain? Is it confidentiality? Integrity? Correctness? non-repudiation? Other properties.
 
-Below we address the first question; the second question will be dealt with in Part 2
+Below we address the first question; the second question will be dealt with in Part 2.
 
 ## Question 1: About the setting
 
