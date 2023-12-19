@@ -2,7 +2,7 @@
 
 Ethereum is a very complex technology and Zero-Knowledge technologies are perhaps even more so. These involve several layers of abstraction, with explanations often consisting of vague descriptions and terminology that implicitly assume certain prior knowledge the reader may not have.
 
-Fuzzy and vague descriptions are the enemy of any rigorous security analysis, so when analyzing the security of a system, we should always ask two questions:
+Fuzzy and vague descriptions are the enemy of any rigorous security analysis, so when analyzing the security of a system we should aim to simplify the process by asking two questions:
 
 * Question 1: What, exactly, is the setting? Which are the parties? Which components of the system are trusted? What is the exact data?
 * Question 2: What, exactly, are the security properties we want to maintain? Is it confidentiality? Integrity? Correctness? non-repudiation? Other properties.
