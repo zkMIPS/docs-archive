@@ -1,6 +1,6 @@
 # Security
 
-Understanding the security properties of ZKM is a challenge. Ethereum already is a very complex technology, and Zero Knowledge even more so, with several layers of abstraction on top of it, at times using unclear terminology with implicit assumptions.
+Ethereum is a very complex technology and Zero-Knowledge technologies are perhaps even more so. These involve several layers of abstraction, with explanations often consisting of vague descriptions and terminology that implicitly assume certain prior knowledge the reader may not have.
 
 Fuzzy and vague descriptions are the enemy of any rigorous security analysis, so when analyzing the security of a system, we should always ask two questions:
 
