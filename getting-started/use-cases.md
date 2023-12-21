@@ -6,7 +6,7 @@ ZKM has valuable applications in Layer 2 (L2) blockchain solutions. L2 solutions
 
 <figure><img src="../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
 
-In addition, multiple transactions can be aggregated into a single proof, reducing the computational overhead required for verification and enhancing scalability. The provided proof guarantees the correctness of the transaction execution and hence reduces the withdrawal time of the processed fund. The figure below provides an overview
+In addition, multiple transactions can be aggregated into a single proof, reducing the computational overhead required for verification and enhancing scalability. The provided proof guarantees the correctness of the transaction execution and hence reduces the withdrawal time of the processed fund.
 
 ## IoT Devices
 
@@ -16,9 +16,7 @@ ZKM, utilizing the MIPS instruction set, holds promises to add verifiable commut
 
 In the context of Virtual Reality (VR), ZKM can contribute to improved privacy and security in VR environments. ZKM can enable users to interact and engage in virtual experiences while maintaining the confidentiality of their personal data and activities. This includes safeguarding sensitive user information, such as biometric data or behavioral patterns, from potential threats. One such application can be explained through VR concerts that are rising in popularity. In one such example, a concert organizer may want to issue tickets in the form of non-fungible tokens (NFTs) to concert givers, but to avoid keeping data due to General Data Protection Regulation (GDPR) and other information laws, they can utilize this feature in order to register concert attendees through the public addresses of these NFTs - due to power of zero-knowledge, the organizer only needs the proof that a ticket has been paid for by a certain address, while the attendee can enjoy the concert live, without worrying about whether their data are being tracked.&#x20;
 
-Furthermore, in wearable devices that utilize MIPS architecture, ZKM can offer privacy-enhancing features and provide secure and private interactions with connected devices and networks. This can be particularly crucial for wearables that handle sensitive user data, such as health-related information or personal fitness metrics. The figure below provides an overview.
-
-
+Furthermore, in wearable devices that utilize MIPS architecture, ZKM can offer privacy-enhancing features and provide secure and private interactions with connected devices and networks. This can be particularly crucial for wearables that handle sensitive user data, such as health-related information or personal fitness metrics.
 
 ## Cloud Computing
 
