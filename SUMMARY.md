@@ -8,5 +8,4 @@
   * [Contribute to ZKM](getting-started/contribute-to-zkm.md)
 * [⚡ ZKM Architecture](zkm-architecture/README.md)
   * [zkVM vs zkEVM](zkm-architecture/zkvm-vs-zkevm.md)
-  * [Security](zkm-architecture/security.md)
 * [💡 FAQ](faq.md)
