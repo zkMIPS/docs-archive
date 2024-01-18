@@ -65,7 +65,7 @@ The verifier program can be somewhere on-chain or in another trusted location. A
 
 If you already have a MIPS program, it can be converted into a verifiable ZK-MIPS program. The written code is first compiled into low-level MIPS instructions. Since MIPS only has a small set of different instructions, it is relatively easy to convert these instructions into a format suitable for ZK proof generation.
 
-![](https://lh7-us.googleusercontent.com/I7La0v9\_JSMjaZlBFy3wJsVDZCwsV1q5V81jc4CtR0Y5hqqKo\_c8SS-fqglnRAr8\_CGLL0P-W2D7kcIR-bqVCSx6VGgZ0rFKKsor6nWw2PqpZ5mY8c5JHJH-ZhrmQsI801aQOprRFpMNsDEjH3VZ6Vg)
+<figure><img src="https://lh7-us.googleusercontent.com/I7La0v9_JSMjaZlBFy3wJsVDZCwsV1q5V81jc4CtR0Y5hqqKo_c8SS-fqglnRAr8_CGLL0P-W2D7kcIR-bqVCSx6VGgZ0rFKKsor6nWw2PqpZ5mY8c5JHJH-ZhrmQsI801aQOprRFpMNsDEjH3VZ6Vg" alt=""><figcaption></figcaption></figure>
 
 _The flow of turning MIPS into ZK proofs_
 
