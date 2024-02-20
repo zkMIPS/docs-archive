@@ -2,9 +2,14 @@
 
 {% embed url="https://github.com/zkMIPS/zkm" %}
 
-## Requirements
+## Minimum Requirements
 
-* UNIX machine with at least 64 GB of RAM
+| Cycles Per Segment | RAM    |
+| ------------------ | ------ |
+| 16384              | 46.7G  |
+| 32768              | 52.8G  |
+| 65536              | 100.3G |
+| 262144             | 204.8G |
 
 ## 1. Compile the Go code to MIPS
 
@@ -22,6 +27,7 @@ This produces an ELF binary.
 ```sh
 export BASEDIR=/path/to/your/go/file/directory
 export ELF_PATH=/path/to/your/go/binary
+export SEG_SIZE=[SEE MINIMUM REQUIREMENT CYCLES FOR EXACT VALUE BASED ON YOUR RAM]
 ```
 
 ## 2. Split the ELF into Segments
@@ -31,7 +37,7 @@ This should take a **few seconds**
 {% endhint %}
 
 ```sh
-RUST_LOG=trace BLOCK_NO=13284491 SEG_OUTPUT=/tmp/output SEG_SIZE=262144 \
+RUST_LOG=trace BLOCK_NO=13284491 SEG_OUTPUT=/tmp/output \
     cargo run --release --example zkmips split
 ```
 
@@ -42,7 +48,7 @@ This should take about **10 minutes**
 {% endhint %}
 
 ```sh
-RUST_LOG=trace BLOCK_NO=13284491 SEG_FILE="/tmp/output/0" SEG_SIZE=262144 \
+RUST_LOG=trace BLOCK_NO=13284491 SEG_FILE="/tmp/output/0" \
     cargo run --release --example zkmips prove
 ```
 
@@ -53,7 +59,7 @@ This should take **20 minutes to a few hours**, depending on the number of segme
 {% endhint %}
 
 ```sh
-RUST_LOG=trace BLOCK_NO=13284491 SEG_FILE_DIR="/tmp/output" SEG_FILE_NUM=$(ls /tmp/output -1 | wc -l) SEG_SIZE=262144 \
+RUST_LOG=trace BLOCK_NO=13284491 SEG_FILE_DIR="/tmp/output" SEG_FILE_NUM=$(ls /tmp/output -1 | wc -l) \
     cargo run --release --example zkmips aggregate_proof_all
 ```
 
