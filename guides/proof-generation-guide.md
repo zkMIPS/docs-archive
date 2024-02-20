@@ -60,3 +60,11 @@ RUST_LOG=trace BLOCK_NO=13284491 SEG_FILE_DIR="/tmp/output" SEG_FILE_NUM=$(ls /t
 {% hint style="info" %}
 `ls /tmp/output -1 | wc -l` outputs how many segments are present in the output file directory.
 {% endhint %}
+
+After aggregating the proof, you should receive a result: `verifier/data/test_circuit` with the files:
+
+```
+common_circuit_data.json  proof_with_public_inputs.json  verifier_only_circuit_data.json
+```
+
+Once you generate this folder, you need to [Verify the Proof](proof-verification-guide.md).
