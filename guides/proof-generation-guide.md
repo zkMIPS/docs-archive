@@ -4,13 +4,11 @@
 
 ## Minimum Requirements
 
-| Cycles Per Segment | RAM    |
-| ------------------ | ------ |
-| 1024               | 16G    |
-| 16384              | 28.2G  |
-| 32768              | 95.2G  |
-| 65536              | 96.3G  |
-| 262144             | 130.1G |
+| Cycles Per Segment | RAM |
+| ------------------ | --- |
+| 32768              | 13G |
+| 65536              | 19G |
+| 262144             | 27G |
 
 ## 1. Compile the Go code to MIPS
 
