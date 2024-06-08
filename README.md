@@ -16,7 +16,7 @@ layout:
 
 ## ZKM Vision & Mission
 
-To facilitate Ethereum as the Global Settlement Layer for secure, verifiable computing.
+ZKM is fully open source and available for anyone to build upon leveraging the MIPS instruction set. The project is heavily research based, pioneering a different way to address verifiable computing to enable a more connected blockchain experience.
 
 We firmly believe in the necessity for a decentralized and trustworthy internet. To accomplish this in an efficient way that is optimized for users, the presently fragmented blockchain space requires complete unification and seamless interoperability.
 
