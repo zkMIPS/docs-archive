@@ -2,7 +2,7 @@
 
 Before you begin, make sure you have generated the proof in the previous page.
 
-{% embed url="https://github.com/zkMIPS/gnark-plonky2-verifier/tree/verifier" %}
+{% embed url="https://github.com/zkMIPS/gnark-plonky2-verifier" %}
 
 ## Convert plonky2 proof to groth16 proof
 
@@ -11,7 +11,6 @@ Copy the three files generated in the previous step to the `gnark-plonky2-verifi
 ```sh
 git clone https://github.com/zkMIPS/gnark-plonky2-verifier.git
 cd gnark-plonky2-verifier
-git checkout -b verifier origin/verifier
 cp verifier/data/test_circuit/* testdata/mips
 go build benchmark.go
 ./benchmark
@@ -19,17 +18,15 @@ go build benchmark.go
 
 Generate the on chain verification contract.
 
-{% code title="gnark-plonky2-verifier" %}
 ```sh
 cd gnark-plonky2-verifier
 go build gnark_sol_caller.go
 ./gnark_sol_caller generate --outputDir hardhat/contracts
 ```
-{% endcode %}
 
 Using verifier contract to verify proof (requires installing hardhat).
 
-```
+```bash
 cp testdata/mips/snark_proof_with_public_inputs.json hardhat/test/
 npx hardhat test
 ```
