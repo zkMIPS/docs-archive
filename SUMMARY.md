@@ -15,5 +15,4 @@
 ## Guides
 
 * [Proof Generation Guide](guides/proof-generation-guide.md)
-* [Proof Verification Guide](guides/proof-verification-guide/README.md)
-  * [Example Execute Operations](guides/proof-verification-guide/example-execute-operations.md)
+* [Proof Verification Guide](guides/proof-verification-guide.md)

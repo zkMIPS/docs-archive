@@ -33,10 +33,6 @@ npx hardhat test
 
 ## Deploy Verifier Contract
 
-{% hint style="info" %}
-In order to execute an operation, you need to make changes to the Verifier.sol [verifyTx() method](https://github.com/zkMIPS/gnark-plonky2-verifier/blob/main/hardhat/contracts/verifier.sol#L267) before proceeding with deployment
-{% endhint %}
-
 ```sh
 npx hardhat ignition deploy ./ignition/modules/Verifier.js --network sepolia
 ```
