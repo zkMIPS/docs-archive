@@ -8,6 +8,7 @@
   * [Combining MIPS with Zero-Knowledge](getting-started/combining-mips-with-zero-knowledge.md)
   * [Use Cases](getting-started/use-cases.md)
 * [⚡ ZKM Architecture](zkm-architecture/README.md)
+  * [Verifiable Computation Context](zkm-architecture/verifiable-computation-context.md)
   * [zkVM vs zkEVM](zkm-architecture/zkvm-vs-zkevm.md)
 * [💡 FAQ](faq.md)
 
