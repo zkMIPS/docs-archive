@@ -60,3 +60,5 @@ verify proof txHash: 0x9fd5e351171da578617db428926d39c4d48e02c8b173c3867126412c1
 ```
 
 You can view the transaction details for the hash.
+
+Congrats! You have just deployed your first proof. You can try using your proof integrated with the [use-cases](https://github.com/zkMIPS/use-cases) of ZKM.

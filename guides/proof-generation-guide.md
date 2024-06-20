@@ -72,4 +72,4 @@ After aggregating the proof, you should receive a result: `verifier/data/test_ci
 common_circuit_data.json  proof_with_public_inputs.json  verifier_only_circuit_data.json
 ```
 
-Once you generate this folder, you need to [Verify the Proof](proof-verification-guide.md).
+Once you generate this folder, you need to [Verify the Proof](proof-verification-guide/).

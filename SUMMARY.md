@@ -15,4 +15,5 @@
 ## Guides
 
 * [Proof Generation Guide](guides/proof-generation-guide.md)
-* [Proof Verification Guide](guides/proof-verification-guide.md)
+* [Proof Verification Guide](guides/proof-verification-guide/README.md)
+  * [Use Case Code](https://github.com/zkMIPS/use-cases)
