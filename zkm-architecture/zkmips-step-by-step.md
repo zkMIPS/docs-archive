@@ -2,7 +2,9 @@
 description: Proofs of Knowledge in Verifiable Computation
 ---
 
-# Verifiable Computation Context
+# zkMIPS: Step by Step
+
+<figure><img src="../.gitbook/assets/zkMIPS-Diagram.webp" alt=""><figcaption><p>Overview of the zkMIPS architecture for proving the execution of a program</p></figcaption></figure>
 
 [Proofs of knowledge](https://docs.zkm.io/getting-started/background-behind-zkvms) in verifiable computation involve a Prover that performs a computation and produces a proof to show this computation was correctly executed, both of which are sent to the Verifier.&#x20;
 
@@ -220,8 +222,6 @@ The L2s in the Universal L2 structure serve as interoperability mechanisms to fa
 <figure><img src="https://lh7-us.googleusercontent.com/docsz/AD_4nXdMiO-1_GhklBv2Fs0JJ6dahJXuGQMnk45E0V_5u4M-qyqX1yPl6RpdU0T7mrMY1zFucTIBSPXJZ52IH6wS6hFulQeoHQWbZN4_7ZgmgLXxpQRTzHRCQ3Os_UwoJFqNOyBF_yd58FwBh0DHQywotDBJulsi?key=mLtoVUSPd7DodgiPO6S3Ig" alt=""><figcaption><p>Diagram from “<a href="https://settlement.network/docs/native/entangled-rollup/universal-l2">Universal L2 Process</a>” in <a href="https://settlement.network">settlement.network</a></p></figcaption></figure>
 
 In this example, 100 USDT is sent from the source chain (ETH L1) to the destination chain (AVA L1). A proof that the 100 USDT was burned on the L2 (ETH UL2)  is generated off-chain. The proof is verified by a verification contract on the destination chain. Once verified, the user will receive 100 USDT on AVA L1.&#x20;
-
-<figure><img src="../.gitbook/assets/image (6).png" alt=""><figcaption></figcaption></figure>
 
 1. &#x20;[zkMIPS whitepaper](https://whitepaper.zkm.io/new\_zkMIPS\_white\_paper.pdf)
 2. [“Getting to Know zkMIPS Proving Architecture”](https://www.zkm.io/blog/getting-to-know-zkmips-proving-architecture)
