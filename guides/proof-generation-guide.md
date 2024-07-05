@@ -15,10 +15,7 @@
 Write your own go program, and compile with
 
 ```sh
-export GOOS=linux
-export GOARCH=mips
-export GOMIPS=softfloat
-go build [YOUR_PROGRAM_NAME].go
+GOOS=linux GOARCH=mips GOMIPS=softfloat go build [YOUR_PROGRAM_NAME].go
 ```
 
 This produces an ELF binary.
@@ -27,6 +24,7 @@ This produces an ELF binary.
 export BASEDIR=/path/to/your/go/file/directory
 export ELF_PATH=/path/to/your/go/binary
 export SEG_SIZE=[SEE MINIMUM REQUIREMENT CYCLES FOR EXACT VALUE BASED ON YOUR RAM]
+export ARGS='[INPUT ARGS]'
 ```
 
 ## 2. Split the ELF into Segments
@@ -36,7 +34,7 @@ This should take a **few seconds**
 {% endhint %}
 
 ```sh
-RUST_LOG=trace BLOCK_NO=13284491 SEG_OUTPUT=/tmp/output \
+RUST_LOG=trace SEG_OUTPUT=/tmp/output \
     cargo run --release --example zkmips split
 ```
 
@@ -47,7 +45,7 @@ This should take about **10 minutes**
 {% endhint %}
 
 ```sh
-RUST_LOG=trace BLOCK_NO=13284491 SEG_FILE="/tmp/output/0" \
+RUST_LOG=trace SEG_FILE="/tmp/output/0" \
     cargo run --release --example zkmips prove
 ```
 
@@ -58,7 +56,7 @@ This should take **20 minutes to a few hours**, depending on the number of segme
 {% endhint %}
 
 ```sh
-RUST_LOG=trace BLOCK_NO=13284491 SEG_FILE_DIR="/tmp/output" SEG_FILE_NUM=$(ls /tmp/output -1 | wc -l) \
+RUST_LOG=trace SEG_FILE_DIR="/tmp/output" SEG_FILE_NUM=$(ls /tmp/output -1 | wc -l) \
     cargo run --release --example zkmips aggregate_proof_all
 ```
 
