@@ -56,12 +56,12 @@ This should take **20 minutes to a few hours**, depending on the number of segme
 {% endhint %}
 
 ```sh
-RUST_LOG=trace SEG_FILE_DIR="/tmp/output" SEG_FILE_NUM=$(ls /tmp/output -1 | wc -l) \
+RUST_LOG=trace SEG_FILE_DIR="/tmp/output" SEG_FILE_NUM=$(ls /tmp/output | wc -l) \
     cargo run --release --example zkmips aggregate_proof_all
 ```
 
 {% hint style="info" %}
-`ls /tmp/output -1 | wc -l` outputs how many segments are present in the output file directory.
+`ls /tmp/output | wc -l` outputs how many segments are present in the output file directory.
 {% endhint %}
 
 After aggregating the proof, you should receive a result: `verifier/data/test_circuit` with the files:
