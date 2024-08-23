@@ -10,53 +10,101 @@
 | 65536              | 19G |
 | 262144             | 27G |
 
-## 1. Compile the Go code to MIPS
+## 1. Set the Variables
 
-Write your own go program, and compile with
-
-```sh
-GOOS=linux GOARCH=mips GOMIPS=softfloat go build [YOUR_PROGRAM_NAME].go
+```bash
+export RUST_LOG=info
+export BASEDIR=/path/to/your/file/directory
+export SEG_SIZE=[SEE CYCLES ABOVE FOR EXACT VALUE BASED ON YOUR RAM]
+export ARGS='[PUBLIC_VALUE] [PRIVATE_VALUE]'
+export SEG_OUTPUT=/tmp/output
+export SEG_FILE_DIR=/tmp/output
 ```
+
+## 2. Compile the Program to MIPS
+
+Write your own program, and compile with
+
+{% tabs %}
+{% tab title="Golang" %}
+<pre class="language-bash"><code class="lang-bash"><strong>GOOS=linux GOARCH=mips GOMIPS=softfloat go build [YOUR_PROGRAM_NAME].go
+</strong></code></pre>
 
 This produces an ELF binary.
 
-```sh
-export BASEDIR=/path/to/your/go/file/directory
-export ELF_PATH=/path/to/your/go/binary
-export SEG_SIZE=[SEE MINIMUM REQUIREMENT CYCLES FOR EXACT VALUE BASED ON YOUR RAM]
-export ARGS='[INPUT ARGS]'
+```bash
+export ELF_PATH=/path/to/your/binary
 ```
 
 ## 2. Split the ELF into Segments
 
-{% hint style="warning" %}
-This should take a **few seconds**
+{% hint style="info" %}
+If you previously ran a program that generated segments, make sure to clear the segments with `rm -rf /tmp/output`&#x20;
 {% endhint %}
 
 ```sh
-RUST_LOG=trace SEG_OUTPUT=/tmp/output \
+ARGS='[PUBLIC_VALUE] [PRIVATE_VALUE]' \
     cargo run --release --example zkmips split
 ```
+{% endtab %}
+
+{% tab title="Rust" %}
+{% hint style="warning" %}
+This currently only works on Linux, not on MacOS
+{% endhint %}
+
+Download and install toolchain for MIPS
+
+```bash
+wget http://musl.cc/mips-linux-muslsf-cross.tgz
+tar -zxvf mips-linux-muslsf-cross.tgz
+```
+
+Modify `~/.cargo/config`
+
+```bash
+[target.mips-unknown-linux-musl]
+linker = "<path-to>/mips-linux-muslsf-cross/bin/mips-linux-muslsf-gcc"
+rustflags = ["--cfg", 'target_os="zkvm"',"-C", "target-feature=+crt-static", "-C", "link-arg=-g"]
+```
+
+Build the sha2 example
+
+```bash
+cd prover/examples/sha2
+cargo build --target=mips-unknown-linux-musl
+```
+
+This produces an ELF binary in `target/mips-unknown-linux-musl/debug/sha2-bench`
+
+```bash
+export ELF_PATH=/path/to/your/binary
+```
+
+## 2. Split the ELF into Segments
+
+{% hint style="info" %}
+If you previously ran a program that generated segments, make sure to clear the segments with `rm -rf /tmp/output`&#x20;
+{% endhint %}
+
+```bash
+ARGS='711e9609339e92b03ddc0a211827dba421f38f9ed8b9d806e1ffdd8c15ffa03d world!'\
+    cargo run --release --example zkmips bench
+```
+{% endtab %}
+{% endtabs %}
 
 ## 3. Generate Proof for Each Segment
 
-{% hint style="warning" %}
-This should take about **10 minutes**
-{% endhint %}
-
 ```sh
-RUST_LOG=trace SEG_FILE="/tmp/output/0" \
+SEG_FILE="/tmp/output/0" \
     cargo run --release --example zkmips prove
 ```
 
 ## 4. Aggregate Proofs
 
-{% hint style="warning" %}
-This should take **20 minutes to a few hours**, depending on the number of segments being aggregated
-{% endhint %}
-
 ```sh
-RUST_LOG=trace SEG_FILE_DIR="/tmp/output" SEG_FILE_NUM=$(ls /tmp/output | wc -l) \
+SEG_FILE_NUM=$(ls /tmp/output | wc -l) \
     cargo run --release --example zkmips aggregate_proof_all
 ```
 
