@@ -23,14 +23,15 @@ export SEG_FILE_DIR=/tmp/output
 
 ## 2. Compile the Program to MIPS
 
-Write your own program, and compile with
+Using the examples as a reference
 
 {% tabs %}
 {% tab title="Golang" %}
-<pre class="language-bash"><code class="lang-bash"><strong>GOOS=linux GOARCH=mips GOMIPS=softfloat go build [YOUR_PROGRAM_NAME].go
+<pre class="language-bash"><code class="lang-bash">cd prover/examples/add-go
+<strong>GOOS=linux GOARCH=mips GOMIPS=softfloat go build .
 </strong></code></pre>
 
-This produces an ELF binary.
+This produces an ELF binary in `examples/add-go/go-add`
 
 ```bash
 export ELF_PATH=/path/to/your/binary
@@ -39,12 +40,24 @@ export ELF_PATH=/path/to/your/binary
 ## 2. Split the ELF into Segments
 
 {% hint style="info" %}
-If you previously ran a program that generated segments, make sure to clear the segments with `rm -rf /tmp/output`&#x20;
+If you previously ran a program that generated segments, make sure to clear the segments with `rm -rf /tmp/output`
 {% endhint %}
 
-```sh
-ARGS='[PUBLIC_VALUE] [PRIVATE_VALUE]' \
-    cargo run --release --example zkmips split
+```bash
+cd ../..
+```
+
+To generate a proof normally
+
+```bash
+cargo run --release --example zkmips split
+```
+
+To bypass the proof generation process (for faster development)
+
+```bash
+HOST_PROGRAM=add_example \
+    cargo run --release --example zkmips prove_host_program
 ```
 {% endtab %}
 
@@ -75,7 +88,7 @@ cd prover/examples/sha2
 cargo build --target=mips-unknown-linux-musl
 ```
 
-This produces an ELF binary in `target/mips-unknown-linux-musl/debug/sha2-bench`
+This produces an ELF binary in `examples/sha2/target/mips-unknown-linux-musl/debug/sha2-bench`
 
 ```bash
 export ELF_PATH=/path/to/your/binary
@@ -84,8 +97,12 @@ export ELF_PATH=/path/to/your/binary
 ## 2. Split the ELF into Segments
 
 {% hint style="info" %}
-If you previously ran a program that generated segments, make sure to clear the segments with `rm -rf /tmp/output`&#x20;
+If you previously ran a program that generated segments, make sure to clear the segments with `rm -rf /tmp/output`
 {% endhint %}
+
+```bash
+cd ../..
+```
 
 ```bash
 ARGS='711e9609339e92b03ddc0a211827dba421f38f9ed8b9d806e1ffdd8c15ffa03d world!'\
