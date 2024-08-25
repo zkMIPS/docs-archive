@@ -14,27 +14,25 @@
 
 ```bash
 export RUST_LOG=info
-export BASEDIR=/path/to/your/file/directory
-export SEG_SIZE=[SEE CYCLES ABOVE FOR EXACT VALUE BASED ON YOUR RAM]
+export BASEDIR=/home/ubuntu/zkm # Replace with your folder location
+export SEG_SIZE=65536 # See cycles above for exact value based on your RAM
 export ARGS='[PUBLIC_VALUE] [PRIVATE_VALUE]'
 export SEG_OUTPUT=/tmp/output
 export SEG_FILE_DIR=/tmp/output
 ```
 
-## 2. Compile the Program to MIPS
-
-Using the examples as a reference
-
 {% tabs %}
 {% tab title="Golang" %}
+## 2. Compile the Program into a MIPS Executable
+
 <pre class="language-bash"><code class="lang-bash">cd prover/examples/add-go
 <strong>GOOS=linux GOARCH=mips GOMIPS=softfloat go build .
 </strong></code></pre>
 
-This produces an ELF binary in `examples/add-go/go-add`
+This produces an ELF binary in `prover/examples/add-go/go-add`
 
 ```bash
-export ELF_PATH=/path/to/your/binary
+export ELF_PATH=$BASEDIR/prover/examples/add-go/go-add
 ```
 
 ## 2. Split the ELF into Segments
@@ -62,8 +60,10 @@ HOST_PROGRAM=add_example \
 {% endtab %}
 
 {% tab title="Rust" %}
+## 2. Compile the Rust Program into a MIPS Executable
+
 {% hint style="warning" %}
-This currently only works on Linux, not on MacOS
+The compilation of the program only works on Linux, not on MacOS
 {% endhint %}
 
 Download and install toolchain for MIPS
@@ -88,10 +88,10 @@ cd prover/examples/sha2
 cargo build --target=mips-unknown-linux-musl
 ```
 
-This produces an ELF binary in `examples/sha2/target/mips-unknown-linux-musl/debug/sha2-bench`
+This produces an ELF binary in `prover/examples/sha2/target/mips-unknown-linux-musl/debug/sha2-bench`
 
 ```bash
-export ELF_PATH=/path/to/your/binary
+export ELF_PATH=$BASEDIR/prover/examples/sha2/target/mips-unknown-linux-musl/debug/sha2-bench
 ```
 
 ## 2. Split the ELF into Segments
@@ -106,7 +106,7 @@ cd ../..
 
 ```bash
 ARGS='711e9609339e92b03ddc0a211827dba421f38f9ed8b9d806e1ffdd8c15ffa03d world!'\
-    cargo run --release --example zkmips bench
+    cargo run --release --example zkmips split
 ```
 {% endtab %}
 {% endtabs %}
