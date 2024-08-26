@@ -1,4 +1,8 @@
-# 💡 FAQ
+---
+icon: question
+---
+
+# FAQ
 
 ## About ZKM
 

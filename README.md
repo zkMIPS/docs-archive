@@ -1,4 +1,5 @@
 ---
+icon: hand-wave
 layout:
   title:
     visible: true
@@ -12,7 +13,7 @@ layout:
     visible: true
 ---
 
-# 👋 Introduction to ZKM
+# Introduction to ZKM
 
 ## ZKM Vision & Mission
 

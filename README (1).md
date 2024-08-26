@@ -1,4 +1,8 @@
-# ☀ Getting Started
+---
+icon: sun
+---
+
+# Getting Started
 
 ZKM stands for Zero-Knowledge MIPS; an advanced architecture that utilizes[ MIPS](https://en.wikipedia.org/wiki/MIPS\_architecture) (Microprocessor without Interlocked Pipelined Stages) architecture - a class of Reduced Instruction Set Computer ([RISC](https://en.wikipedia.org/wiki/Reduced\_instruction\_set\_computer)) CPU instructions - and harnesses the power of zero-knowledge proofs ([ZKPs](https://en.wikipedia.org/wiki/Zero-knowledge\_proof)) to achieve its objectives.
 
