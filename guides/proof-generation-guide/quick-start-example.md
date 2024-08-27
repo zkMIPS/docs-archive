@@ -25,23 +25,19 @@ export SEG_FILE_DIR=/tmp/output
 {% tab title="Golang" %}
 ## 2. Compile the Go Program into a MIPS Executable
 
-<pre class="language-bash"><code class="lang-bash"><strong>GOOS=linux GOARCH=mips GOMIPS=softfloat go build -C prover/examples/add-go
+<pre class="language-bash"><code class="lang-bash"><strong>GOOS=linux GOARCH=mips GOMIPS=softfloat go build -C prover/examples/sha2-go
 </strong></code></pre>
 
-This produces an ELF binary in `prover/examples/add-go/go-add`
+This produces an ELF binary in `prover/examples/sha2-go/sha2-go`
 
 ```bash
-export ELF_PATH=$BASEDIR/prover/examples/add-go/go-add
+export ELF_PATH=$BASEDIR/prover/examples/sha2-go/sha2-go
 ```
 
 ## 3. Generate the Proof from the ELF
 
-{% hint style="info" %}
-If you previously ran a program that generated segments, make sure to clear the segments with `rm -rf /tmp/output`
-{% endhint %}
-
 ```bash
-HOST_PROGRAM=add_example \
+HOST_PROGRAM=sha2_go \
     cargo run --release --example zkmips prove_host_program
 ```
 {% endtab %}
@@ -71,28 +67,24 @@ rustflags = ["--cfg", 'target_os="zkvm"',"-C", "target-feature=+crt-static", "-C
 Build the sha2 example
 
 ```bash
-cd prover/examples/sha2
+cd prover/examples/sha2-rust
 cargo build --target=mips-unknown-linux-musl
 ```
 
 This produces an ELF binary in `prover/examples/sha2/target/mips-unknown-linux-musl/debug/sha2-bench`
 
 ```bash
-export ELF_PATH=$BASEDIR/prover/examples/sha2/target/mips-unknown-linux-musl/debug/sha2-bench
+export ELF_PATH=$BASEDIR/prover/examples/sha2/target/mips-unknown-linux-musl/debug/sha2-rust
 ```
 
 ## 3. Generate the Proof from the ELF
-
-{% hint style="info" %}
-If you previously ran a program that generated segments, make sure to clear the segments with `rm -rf /tmp/output`
-{% endhint %}
 
 ```bash
 cd ../..
 ```
 
 ```bash
-HOST_PROGRAM="sha2_bench" \
+HOST_PROGRAM="sha2_rust" \
     cargo run --release --example zkmips prove_host_program
 ```
 {% endtab %}

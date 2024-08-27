@@ -23,7 +23,12 @@ If there is an error when running a guest program, the proof should not be gener
 ```go
 package main
 
-import "github.com/zkMIPS/zkm/go-runtime/zkm_runtime"
+import (
+	"bytes"
+	"crypto/sha256"
+	"log"
+	"github.com/zkMIPS/zkm/go-runtime/zkm_runtime"
+)
 
 type DataId uint32
 
@@ -51,23 +56,19 @@ type Data struct {
 
 func main() {
 	a := zkm_runtime.Read[Data]()
-	a.Input1[0] = a.Input1[0] + a.Input1[1]
-	a.Input2 = a.Input2 + a.Input2
-	a.Input3 = a.Input3 + a.Input3
-	a.Input4 = a.Input4 + a.Input4
-	a.Input5 = a.Input5 + a.Input5
-	a.Input6 = a.Input6 + a.Input6
-	a.Input7 = a.Input7 + a.Input7
-	a.Input8 = a.Input8 + a.Input8
-	a.Input9 = a.Input9 + a.Input9
-	if a.Input11 != TYPE3 {
-		println("enum type error")
-	}
-	if a.Input12 != "hello" {
-		println("string type error")
-	}
-	a.Input10[0] = a.Input10[0] + a.Input10[1]
+
+	data := []byte(a.Input12)
+	hash := sha256.Sum256(data)
+
+	assertEqual(hash[:], a.Input10)
+
 	zkm_runtime.Commit[Data](a)
+}
+
+func assertEqual(a []byte, b []byte) {
+	if !bytes.Equal(a, b) {
+		log.Fatal("%x != %x", a, b)
+	}
 }
 ```
 {% endtab %}
@@ -108,10 +109,6 @@ The Host program is responsible for setting up the environment for the guest pro
 * Evaluating the private outputs provided by the guest
 * Evaluating the public journal output provided by the guest
 
-{% hint style="info" %}
-The Host program is written in Rust
-{% endhint %}
-
 ### Example Host Program
 
 {% tabs %}
@@ -125,8 +122,18 @@ fn prove_sha2_go() {
     let seg_size = seg_size.parse::<_>().unwrap_or(0);
 
     let mut state = load_elf_with_patch(&elf_path, vec![]);
+    // load input
+    let args = env::var("ARGS").unwrap_or("data-to-hash".to_string());
+    // assume the first arg is the hash output(which is a public input), and the second is the input.
+    let args: Vec<&str> = args.split_whitespace().collect();
+    assert_eq!(args.len(), 2);
 
-    let data = Data::new();
+    let mut data = Data::new();
+    
+    // Fill in the input data
+    data.input10 = hex::decode(args[0]).unwrap();
+    data.input12 = args[1].to_string();
+
     state.add_input_stream(&data);
     log::info!(
         "enum {} {} {}",
@@ -162,6 +169,8 @@ fn prove_sha2_rust() {
     // 1. split ELF into segs
     let elf_path = env::var("ELF_PATH").expect("ELF file is missing");
     let seg_path = env::var("SEG_OUTPUT").expect("Segment output path is missing");
+    let seg_size = env::var("SEG_SIZE").unwrap_or("0".to_string());
+    let seg_size = seg_size.parse::<_>().unwrap_or(0);
 
     let mut state = load_elf_with_patch(&elf_path, vec![]);
     // load input
@@ -179,14 +188,23 @@ fn prove_sha2_rust() {
     log::info!("private input value: {:X?}", private_input);
     state.add_input_stream(&private_input);
 
-    let (total_steps, mut state) = split_prog_into_segs(state, &seg_path, "", 0);
+    let (total_steps, mut state) = split_prog_into_segs(state, &seg_path, "", seg_size);
 
     let value = state.read_public_values::<[u8; 32]>();
     log::info!("public value: {:X?}", value);
     log::info!("public value: {} in hex", hex::encode(value));
 
-    let seg_file = format!("{seg_path}/{}", 0);
-    prove_single_seg_common(&seg_file, "", "", "", total_steps);
+    let mut seg_num = 1usize;
+    if seg_size != 0 {
+        seg_num = (total_steps + seg_size - 1) / seg_size;
+    }
+
+    if seg_num == 1 {
+        let seg_file = format!("{seg_path}/{}", 0);
+        prove_single_seg_common(&seg_file, "", "", "", total_steps)
+    } else {
+        prove_multi_seg_common(&seg_path, "", "", "", seg_size, seg_num, 0).unwrap()
+    }
 }
 ```
 {% endtab %}
